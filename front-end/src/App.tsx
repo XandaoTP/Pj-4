@@ -1,16 +1,10 @@
-import { Button } from "react-bootstrap";
-import styled from "styled-components";
+import { Routes } from "./routes";
 
 function App() {
   return (
-    <div>
-      <Tittle>oi</Tittle>
-    </div>
-  );
+    <Routes />
+  )
 }
 
-const Tittle = styled(Button)`
-  font-size: 1rem;
-`
 
 export default App;
