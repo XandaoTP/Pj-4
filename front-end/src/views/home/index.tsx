@@ -17,7 +17,7 @@ export function Home () {
       </div>
       <div className="d-flex justify-content-center gap-3">
         <CustomButton loading size='lg' variant="success" to="/login">ENTRAR</CustomButton>
-        <CustomButton size='lg' variant="success" to="/register">CRIAR CONTA</CustomButton>
+        <CustomButton size='lg' variant="success" to="/signin">CRIAR CONTA</CustomButton>
       </div>
       <Footer withoutMargin />
     </main>    
