@@ -1,7 +1,6 @@
 import styled from "styled-components"
 import Logo  from "../../assetes/img/mundo-home.png"
 import { CustomButton } from "../../components/custombutton"
-import { Layout } from "../../components/layout"
 import { Footer } from "../../components/layout/footer"
 
 export function Home () {
@@ -20,7 +19,7 @@ export function Home () {
         <CustomButton loading size='lg' variant="success" to="/login">ENTRAR</CustomButton>
         <CustomButton size='lg' variant="success" to="/register">CRIAR CONTA</CustomButton>
       </div>
-      <Footer />
+      <Footer withoutMargin />
     </main>    
     )
 }
