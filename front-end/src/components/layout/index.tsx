@@ -1,7 +1,15 @@
-export function Footer () {
+import { Footer } from "./footer"
+import { Header } from "./header"
+
+type Props = {
+    children: React.ReactNode 
+}
+export const Layout: React.FC<Props> = ({ children }) => {
     return (
         <>
-        <div className="mb-0">oi</div>
+        <Header />
+        {children}
+        <Footer />
         </>
     )
 }
