@@ -9,7 +9,7 @@ export function Error404 () {
         <Layout>
             <Container className='text-center'>
                 <PageTitle>PAGINA NÃO ENCONTRADA</PageTitle>
-                <Msgerror>Erro ao buscar pagina. Use o menu acima.</Msgerror>
+                <Msgerror bg-secondary>Erro ao buscar pagina. Use o menu acima.</Msgerror>
             </Container>    
         </Layout>
     )

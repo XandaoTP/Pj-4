@@ -15,6 +15,7 @@ export function SignInView () {
                 placeholder='Digite seu nome' 
                 error='preencha seu nome.'
                 isInvalid
+                
                 />
             </Container>
         </Layout>
