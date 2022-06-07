@@ -1,5 +1,5 @@
 import { Form, FormControlProps } from "react-bootstrap";
-import { IMask, IMaskInput } from "react-imask";
+import { IMaskInput } from "react-imask";
 
 type Props = {
     controlId: string
