@@ -10,6 +10,8 @@ import { CreateUser } from "../../services/createUser";
 import { FirebaseError } from "firebase/app";
 import { AuthErrorCodes } from "firebase/auth";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { updateUser } from "../../store/slices/userSlice";
 
 type FormValues = {
     name: string
@@ -20,7 +22,8 @@ type FormValues = {
 }
 
 export function SignInView () {
-   const formik = useFormik<FormValues>({
+    const dispatch = useDispatch()
+    const formik = useFormik<FormValues>({
         initialValues: {
             name: '',
             email: '',
@@ -39,7 +42,7 @@ export function SignInView () {
         onSubmit: async (values, { setFieldError  }) => {
             try {
              const user = await CreateUser(values)
-             console.log('user', user)
+             dispatch(updateUser(user))
             } catch(error) {
                if (error instanceof FirebaseError && error.code === AuthErrorCodes.EMAIL_EXISTS ) {
                    setFieldError('email', 'E-mail já cadastrado.')

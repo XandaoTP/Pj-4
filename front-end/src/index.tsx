@@ -6,6 +6,8 @@ import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 import { GlobalCss } from './assetes/css/global';
+import store  from './store/store';
+import { Provider } from 'react-redux';
 
 
 
@@ -14,11 +16,13 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-    <GlobalCss />
-    <App />
-    <ToastContainer />
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <GlobalCss />
+        <App />
+        <ToastContainer />
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
 
