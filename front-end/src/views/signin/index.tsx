@@ -5,8 +5,11 @@ import { CustomButton } from "../../components/custombutton";
 import { FormField } from "../../components/formfield";
 import { Layout } from "../../components/layout";
 import * as yup from 'yup'
-import { sensitiveHeaders } from "http2";
 import { PageTitle } from "../../components/pagetitle";
+import { CreateUser } from "../../services/createUser";
+import { FirebaseError } from "firebase/app";
+import { AuthErrorCodes } from "firebase/auth";
+import { toast } from "react-toastify";
 
 type FormValues = {
     name: string
@@ -33,9 +36,17 @@ export function SignInView () {
             agree: yup.boolean().equals([true], 'Aceite os termos de uso.')
 
         }),
-        onSubmit: (values) => {
-            console.log('oi', values)
-            formik.setFieldError('name', 'Preencha o nome.')
+        onSubmit: async (values, { setFieldError  }) => {
+            try {
+             const user = await CreateUser(values)
+             console.log('user', user)
+            } catch(error) {
+               if (error instanceof FirebaseError && error.code === AuthErrorCodes.EMAIL_EXISTS ) {
+                   setFieldError('email', 'E-mail já cadastrado.')
+                   return
+               }
+               toast.error('Ocorreu um erro ao cadastrar. Tente de novo.')
+            }
         }
     })
     const formProps = (fieldName: keyof FormValues) => {
