@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 import { Col, Container, Form, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CustomButton } from "../../components/custombutton";
 import { FormField } from "../../components/formfield";
 import { Layout } from "../../components/layout";
@@ -23,6 +23,7 @@ type FormValues = {
 
 export function SignInView () {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const formik = useFormik<FormValues>({
         initialValues: {
             name: '',
@@ -42,6 +43,7 @@ export function SignInView () {
         onSubmit: async (values, { setFieldError  }) => {
             try {
              const user = await CreateUser(values)
+             navigate('/novacarona')
              dispatch(updateUser(user))
             } catch(error) {
                if (error instanceof FirebaseError && error.code === AuthErrorCodes.EMAIL_EXISTS ) {
