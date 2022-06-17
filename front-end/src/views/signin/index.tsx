@@ -112,8 +112,8 @@ export function SignInView () {
                             <div className="d-grid mt-3 mb-3">
                             <CustomButton
                              type="submit"
-                              loading={formik.isValidating || formik. isSubmitting}
-                              disabled={formik.isValidating || formik. isSubmitting}
+                              loading={formik.isValidating || formik.isSubmitting}
+                              disabled={formik.isValidating || formik.isSubmitting}
                             >
                                 Criar Conta
                             </CustomButton>
