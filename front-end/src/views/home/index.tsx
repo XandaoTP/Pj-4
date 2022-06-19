@@ -20,8 +20,7 @@ export function Home () {
       </div>
       {isUserLoggedIn ? (
         <div className="d-flex justify-content-center gap-3">
-        <CustomButton loading size='lg' variant="success" to="/novacarona">Nova carona</CustomButton>
-        
+        <CustomButton loading size='lg' variant="success" to="/novacarona">Nova carona</CustomButton>   
       </div>
       ) : (
       <div className="d-flex justify-content-center gap-3">

@@ -1,4 +1,5 @@
 import { Route, Routes as RDroutes } from "react-router-dom";
+import { PublicOnlyRoute } from "./components/publiconlyroute";
 import { Home } from "./views/home";
 import { NewRideView } from "./views/newride";
 import { Error404 } from "./views/notefoundpage";
@@ -10,7 +11,12 @@ export function Routes () {
             <Route path='/' element={<Home />} />
             <Route path='/novacarona' element={<NewRideView />} />
             <Route path='*' element={<Error404 />} />
-            <Route path='/signin' element={<SignInView />} />
+            <Route 
+            path='/signin' 
+            element= {<PublicOnlyRoute>
+                        <SignInView />
+                      </PublicOnlyRoute>}
+            />
         </RDroutes>
     )
 }
