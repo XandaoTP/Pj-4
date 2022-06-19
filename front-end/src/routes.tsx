@@ -1,4 +1,5 @@
 import { Route, Routes as RDroutes } from "react-router-dom";
+import { PrivateRoute } from "./components/privateroute";
 import { PublicOnlyRoute } from "./components/publiconlyroute";
 import { Home } from "./views/home";
 import { LoginView } from "./views/login";
@@ -10,7 +11,13 @@ export function Routes () {
     return (
         <RDroutes>
             <Route path='/' element={<Home />} />
-            <Route path='/novacarona' element={<NewRideView />} />
+            <Route 
+            path='/novacarona' 
+            element={<PrivateRoute>
+                        <NewRideView />
+                     </PrivateRoute>
+                }
+            />
             <Route path='*' element={<Error404 />} />
             <Route 
             path='/signin' 
