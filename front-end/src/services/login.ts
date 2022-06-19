@@ -1,4 +1,3 @@
-import { sign } from "crypto"
 import { signInWithEmailAndPassword } from "firebase/auth"
 import { User } from "../entities/User"
 import { auth } from "./firebase"

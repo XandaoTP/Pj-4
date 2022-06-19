@@ -1,20 +1,21 @@
 import { useFormik } from "formik";
 import { Form } from "react-bootstrap";
-import { formatDiagnostic } from "typescript";
+import { AutoCompleteGoogleField } from "../../components/autocompletefield";
 import { CustomButton } from "../../components/custombutton";
 import { FormField } from "../../components/formfield";
+import { Address } from "../../entities/adress";
 
 type FormValues = {
-    saida: string
-    chegada: string
+    departure: Address | null
+    destination: Address | null
     comments: string
 }
 
 export function EstimateForm () {
     const formik = useFormik<FormValues>({
         initialValues: {
-            saida:'',
-            chegada: '',
+            departure: null,
+            destination: null,
             comments: ''
         },
         onSubmit: async (values) => {
@@ -33,15 +34,17 @@ export function EstimateForm () {
     }
     return (
         <Form onSubmit={formik.handleSubmit}>
-            <FormField
-            {...formProps('saida')}
+            <AutoCompleteGoogleField
+            {...formProps('departure')}
                 label="Endereço de saída"
                 placeholder="Informe o endereço de saída"
+                onChange={(address) => formik.setFieldValue('departure', address)}
             />
-             <FormField
-            {...formProps('chegada')}
+             <AutoCompleteGoogleField
+            {...formProps('destination')}
                 label="Endereço de chegada"
                 placeholder="Informe o endereço destino"
+                onChange={(address) => formik.setFieldValue('destination', address)}
             />
              <FormField
             {...formProps('comments')}
