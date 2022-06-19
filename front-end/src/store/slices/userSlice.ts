@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { User } from "../../entities/User";
+import { AllReducerState } from "../store";
 
 type UserState = {
     loadingUser: boolean
@@ -29,3 +30,5 @@ const slice = createSlice({
 export const { updateUser, deleteUser } = slice.actions 
 
 export default slice.reducer
+
+export const selectUserLoggedIn = (state: AllReducerState) => !!state.userData.user 
