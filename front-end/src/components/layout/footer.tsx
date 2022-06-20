@@ -29,7 +29,6 @@ export function Footer ({ withoutMargin = false }: Props) {
 
 const FooterBar = styled.footer`
     Background: #000000;
-    position: fixed;
     bottom: 0;
     width: 100%;
 `
