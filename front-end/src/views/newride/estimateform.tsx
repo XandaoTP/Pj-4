@@ -6,8 +6,8 @@ import { FormField } from "../../components/formfield";
 import { Address } from "../../entities/adress";
 import * as yup from 'yup';
 import { CreateEstimate, NewEstimate } from "../../services/createestimate";
-import { useDispatch } from "react-redux";
-import { setCurrentEstimate } from "../../store/slices/estimateSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { clearCurrentEstimate, selectCurrentEstimate, setCurrentEstimate } from "../../store/slices/estimateSlice";
 
 type FormValues = {
     departure: Address | null
@@ -17,11 +17,12 @@ type FormValues = {
 
 export function EstimateForm () {
     const dispatch = useDispatch()
+    const currentEstimate = useSelector(selectCurrentEstimate)
     const formik = useFormik<FormValues>({
         initialValues: {
-            departure: null,
-            destination: null,
-            comments: ''
+            departure: currentEstimate?.departure || null,
+            destination: currentEstimate?.destination || null,
+            comments: currentEstimate?.comments || ''
         },
         validationSchema: yup.object().shape({
             departure: yup.object()
@@ -42,38 +43,56 @@ export function EstimateForm () {
             controlId: `input-${fieldName}`,
             error: formik.errors[fieldName],
             isInvalid: formik.touched[fieldName] && !!formik.errors[fieldName],
-            isValid: formik.touched[fieldName] && !formik.errors[fieldName]
+            isValid: formik.touched[fieldName] && !formik.errors[fieldName],
+            disabled: !!currentEstimate
         }
 
     }
+    const handleChangeAddress = () => {
+        dispatch(clearCurrentEstimate())
+    }
     return (
-        <Form onSubmit={formik.handleSubmit}>
-            <AutoCompleteGoogleField
-            {...formProps('departure')}
-                label="Endereço de saída"
-                placeholder="Informe o endereço de saída"
-                onChange={(address) => formik.setFieldValue('departure', address)}
-            />
-             <AutoCompleteGoogleField
-            {...formProps('destination')}
-                label="Endereço de chegada"
-                placeholder="Informe o endereço destino"
-                onChange={(address) => formik.setFieldValue('destination', address)}
-            />
-             <FormField
-            {...formProps('comments')}
-                label="Comentarios "
-                placeholder="Coloque aqui detalhes da carona"
-                as='textarea'
-            />
-            <div className='d-grid d-md-block'>
-                <CustomButton
-                type="submit"
-                loading={formik.isSubmitting || formik.isValidating}
-                disabled={formik.isSubmitting || formik.isValidating}
-                >Calcular preço
-                </CustomButton>
-            </div>
-        </Form>
+        <>
+            <Form onSubmit={formik.handleSubmit}>
+                <AutoCompleteGoogleField
+                {...formProps('departure')}
+                    label="Endereço de saída"
+                    placeholder="Informe o endereço de saída"
+                    onChange={(address) => formik.setFieldValue('departure', address)}
+                />
+                <AutoCompleteGoogleField
+                {...formProps('destination')}
+                    label="Endereço de chegada"
+                    placeholder="Informe o endereço destino"
+                    onChange={(address) => formik.setFieldValue('destination', address)}
+                />
+                <FormField
+                {...formProps('comments')}
+                    label="Comentarios "
+                    placeholder="Coloque aqui detalhes da carona"
+                    as='textarea'
+                />
+                {!currentEstimate && (
+                    <div className='d-grid d-md-block'>
+                        <CustomButton
+                        type="submit"
+                        loading={formik.isSubmitting || formik.isValidating}
+                        disabled={formik.isSubmitting || formik.isValidating}
+                        >Calcular preço
+                        </CustomButton>
+                    </div>
+                )}
+            </Form>
+                {currentEstimate && (
+            <CustomButton
+             variant="outline-success"
+             type="button"
+             onClick={handleChangeAddress}
+              >
+                Alterar endereços
+            </CustomButton>
+            )}        
+        </>    
+
     )
 }
