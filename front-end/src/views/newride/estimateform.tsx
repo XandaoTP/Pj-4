@@ -1,9 +1,10 @@
-import { useFormik } from "formik";
+import { useFormik, yupToFormErrors } from "formik";
 import { Form } from "react-bootstrap";
 import { AutoCompleteGoogleField } from "../../components/autocompletefield";
 import { CustomButton } from "../../components/custombutton";
 import { FormField } from "../../components/formfield";
 import { Address } from "../../entities/adress";
+import * as yup from 'yup';
 
 type FormValues = {
     departure: Address | null
@@ -18,6 +19,13 @@ export function EstimateForm () {
             destination: null,
             comments: ''
         },
+        validationSchema: yup.object().shape({
+            departure: yup.object()
+            .typeError('Selecione um endereço.'),
+            destination: yup.object()
+                .typeError('Selecione um endereço.'),
+            comments: yup.string().required('informe os detalhes.')         
+        }),
         onSubmit: async (values) => {
             console.log(values)
         } 
