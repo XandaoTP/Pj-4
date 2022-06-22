@@ -146,8 +146,8 @@ const Parag = styled.p`
  
 `
 const Imganimation = styled.div`
- &:hover {
-    ${Parag} {
+   .ss {
+   &:hover {
     display: block;
   }
  }
