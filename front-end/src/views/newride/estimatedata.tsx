@@ -11,6 +11,7 @@ export function EstimateData () {
         <EstimateDivStyled>
             <DataStyled><span>Tempo</span>{estimateData.minutes}min</DataStyled>
             <DataStyled><span>Distancia</span>{(estimateData.meters /1000).toLocaleString('pt-br', {minimumFractionDigits: 2, maximumFractionDigits: 2})}Km</DataStyled>
+            <DataStyled><span>Distancia</span>{(estimateData.value).toLocaleString('pt-br',{currency: 'BRL', style: 'currency'})}</DataStyled>
         </EstimateDivStyled>
     )
 }
