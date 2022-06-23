@@ -88,6 +88,7 @@ export function EstimateForm () {
              variant="outline-success"
              type="button"
              onClick={handleChangeAddress}
+             className='mb-3 md-md-0'
               >
                 Alterar endereços
             </CustomButton>

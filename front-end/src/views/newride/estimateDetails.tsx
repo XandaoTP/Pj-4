@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux"
 import styled from "styled-components"
 import { selectHasCurrentEstimate } from "../../store/slices/estimateSlice"
+import { EstimateData } from "./estimatedata"
 import { EstimateMap } from "./estimatemap"
 
 
@@ -14,9 +15,10 @@ export function EstimateDetails () {
     )
 }
 return (
-    <>
-    <EstimateMap />
-    </>
+    <WithEstimateDataStyled>
+        <EstimateMap />
+        <EstimateData />
+    </WithEstimateDataStyled>
  )
 }
 
@@ -28,4 +30,9 @@ const SquareNoEstimate = styled.div`
  align-items: center;
  justify-content: center;
  padding: 0 50px;
+`
+const WithEstimateDataStyled = styled.div`
+height: 100%;
+display: flex;
+flex-direction: column;
 `
