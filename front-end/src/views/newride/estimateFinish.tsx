@@ -1,12 +1,15 @@
 import { OrderResponseBody } from "@paypal/paypal-js";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { PaypalButton } from "../../components/paypalbutton";
 import { CreateRide } from "../../services/createride";
-import { selectCurrentEstimate } from "../../store/slices/estimateSlice";
+import { clearCurrentEstimate, selectCurrentEstimate } from "../../store/slices/estimateSlice";
 import { selectUser } from "../../store/slices/userSlice";
 
 export function PaypalFinish () {
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
     const currentEstimate = useSelector(selectCurrentEstimate)
     const user = useSelector(selectUser)
     if(!currentEstimate || !user) {
@@ -19,6 +22,8 @@ export function PaypalFinish () {
                 gatwayId: details.id,
                 userId: user?.id
             })
+            dispatch(clearCurrentEstimate())
+            navigate('/sucesso')
         } catch {
             toast.error('Falha ao processar seu pagamento.')
         }
