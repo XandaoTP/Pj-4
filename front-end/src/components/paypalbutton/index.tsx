@@ -4,10 +4,12 @@ import { OrderResponseBody } from '@paypal/paypal-js'
 
 type props = {
     value: number
+    customId: string
     onSuccess: (details: OrderResponseBody) => Promise<void>
+    onError: () => void
 }
 
-export function PaypalButton ({ value, onSuccess }: props) {
+export function PaypalButton ({ value, customId, onError,  onSuccess }: props) {
     return (
         <PayPalbtnStyled
             createOrder={(data, actions) => {
@@ -17,7 +19,8 @@ export function PaypalButton ({ value, onSuccess }: props) {
                         amount: {
                             currency_code: 'BRL',
                             value: value.toString()
-                        }
+                        },
+                        custom_id: customId
                     }],
                     application_context: {
                         brand_name: 'Eco taxi',
@@ -31,7 +34,7 @@ export function PaypalButton ({ value, onSuccess }: props) {
                onSuccess(details)
                }
             }}
-        
+            onError={onError}
             style={{
                 color:'black',
                 layout: 'horizontal',
