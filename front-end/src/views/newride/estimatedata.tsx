@@ -19,13 +19,15 @@ export function EstimateData () {
 const EstimateDivStyled = styled.div`
 display: flex;
   background: #b9f2c2 ;
-  padding: 12px;
+  padding: 5px 0;
   justify-content: space-between;
+  margin-bottom: 10px;
 `
 
 const DataStyled = styled.p`
     margin: 0;
     span {
         display: block;
+        font-size: 0.800rem;
     }
 `

@@ -30,7 +30,7 @@ export function EstimateMap () {
             <DNoneMaps>
                 <GoogleMap
                     mapContainerStyle={{
-                        minHeight: 150
+                        minHeight: 130
                     }}
                     center={{lat:0, lng :0}}
                     zoom={20} 

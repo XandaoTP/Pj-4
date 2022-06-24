@@ -2,6 +2,7 @@ import { useSelector } from "react-redux"
 import styled from "styled-components"
 import { selectHasCurrentEstimate } from "../../store/slices/estimateSlice"
 import { EstimateData } from "./estimatedata"
+import { PaypalFinish } from "./estimateFinish"
 import { EstimateMap } from "./estimatemap"
 
 
@@ -18,6 +19,7 @@ return (
     <WithEstimateDataStyled>
         <EstimateMap />
         <EstimateData />
+        <PaypalFinish />
     </WithEstimateDataStyled>
  )
 }
