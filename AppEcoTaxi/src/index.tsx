@@ -1,6 +1,10 @@
 import React from "react"
-import { Text } from "react-native"
+import { HomeScreen } from "./screens/home"
 
 export default function App () {
-    return <Text>Eco Taxi</Text>
+    return (
+       <HomeScreen />
+    )
+        
 }
+
