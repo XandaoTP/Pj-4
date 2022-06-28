@@ -79,7 +79,7 @@ export function Home ({worldAnimation = true , darkmode = true}: Props) {
       </div>
       )}
       <Row>
-        <Col className="d-flex flex-row gap-2" xs={12}>
+        <Col className="d-flex flex-row gap-2 mb-5 mt-5" xs={12}>
       {[
     'Primary',
     'Secondary',
@@ -93,14 +93,13 @@ export function Home ({worldAnimation = true , darkmode = true}: Props) {
           key={variant}
           text={variant.toLowerCase() === 'light' ? 'dark' : 'white'}
           style={{ width: '18rem' }}
-          className="my-2"    
+          className={variant.toLocaleLowerCase()}   
         >
-          <Card.Header>Header</Card.Header>
+          <Card.Header>Info</Card.Header>
           <Card.Body>
-            <Card.Title>{variant} Card Title </Card.Title>
+            <Card.Title>Saiba </Card.Title>
             <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. 
             </Card.Text>
           </Card.Body>
         </CardStyled>
@@ -136,13 +135,10 @@ const ContainerStyled = styled(Container)`
   flex:1;
 ` 
 const CardStyled = styled(Card)`
-  .parag:hover,
+  &:hover,
   &:focus { 
   transition: transform .2s;
-  transform: scale(1.2);
   z-index: 10;
-  }
-  &:active {
-    color: red;
+  transform: scale(1.2) rotate(-3deg);
   }
 `
