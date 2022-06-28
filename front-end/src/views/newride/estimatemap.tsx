@@ -1,4 +1,4 @@
-import { GoogleMap, Marker, MarkerF } from "@react-google-maps/api";
+import { GoogleMap, MarkerF } from "@react-google-maps/api";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { LoadGoogleScript } from "../../components/LoadGoogleScript";

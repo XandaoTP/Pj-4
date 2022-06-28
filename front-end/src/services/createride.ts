@@ -1,4 +1,3 @@
-import { Data } from "@react-google-maps/api"
 import { addDoc, collection } from "firebase/firestore"
 import { Estimate } from "../entities/estimate"
 import { db } from "./firebase"
