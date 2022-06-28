@@ -38,6 +38,13 @@ export function Home ({worldAnimation = true , darkmode = true}: Props) {
         }
       }, [isWorldAnimation, worldAnimation])
     const isUserLoggedIn = useSelector(selectUserLoggedIn)
+    const colors =  [ {"color": "Primary", "text": "oioioioioi"},
+    {"color": "Success"},
+    {"color": "Secondary"},
+    {"color": "info"},
+    {"color": "Warning"},
+    {"color": "Light"},
+    ]
     return (
     <MainStyled>
       <ContainerStyled fluid="sm" className={!getvaluedarklight ? 'bg-dark' : 'bg-white flex-1'}>
@@ -80,26 +87,20 @@ export function Home ({worldAnimation = true , darkmode = true}: Props) {
       )}
       <Row>
         <Col className="d-flex flex-row gap-2 mb-5 mt-5" xs={12}>
-      {[
-    'Primary',
-    'Secondary',
-    'Success',
-    'Danger',
-    'Warning',
-    'Light',
-  ].map((variant) => (
+      {
+        colors.map((variant) => (
         <CardStyled
-          bg={variant.toLowerCase()}
-          key={variant}
-          text={variant.toLowerCase() === 'light' ? 'dark' : 'white'}
+          bg={variant.color.toLowerCase()}
+          key={variant.color}
+          text={variant.color.toLowerCase() === 'light' ? 'dark' : 'white'}
           style={{ width: '18rem' }}
-          className={variant.toLocaleLowerCase()}   
+          className={variant.color.toLocaleLowerCase()}   
         >
           <Card.Header>Info</Card.Header>
           <Card.Body>
             <Card.Title>Saiba </Card.Title>
             <Card.Text>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+              {variant.text} 
             </Card.Text>
           </Card.Body>
         </CardStyled>
@@ -117,7 +118,10 @@ text-align: center;
 vertical-align: middle;
 `
 const Parag = styled.p`
- 
+ &:hover,
+ &:focus {
+  transform: scale(0.9);
+ }
 `
 const Imganimation = styled.div`
    .ss {
@@ -137,8 +141,10 @@ const ContainerStyled = styled(Container)`
 const CardStyled = styled(Card)`
   &:hover,
   &:focus { 
-  transition: transform .2s;
+  transition: transform 0.8s;
   z-index: 10;
   transform: scale(1.2) rotate(-3deg);
+  border-radius: 15px;
+  box-shadow: 5px 5px 5px #000;
   }
 `
