@@ -10,14 +10,13 @@ import { useEffect, useState } from "react"
 import { Card, Col, Container, Row } from "react-bootstrap"
 
 type Props = {
-  worldAnimation?: boolean
-  darkmode: boolean
+  worldAnimation?: boolean  
   getvaluedarkmode: string
 }
 
-export function Home ({worldAnimation = true , darkmode = true}: Props) {
+export function Home ({worldAnimation = true}: Props) {
 const getvaluedarkmode = localStorage.getItem('value')
-  const getvaluedarklight = JSON.parse(getvaluedarkmode || '{}') as boolean
+  const getvaluedarklight = JSON.parse(getvaluedarkmode || '{}')
 
   const [isdarkmode, setDarkmode] = useState(() => {
     const initialState = !getvaluedarklight;
@@ -80,20 +79,20 @@ const getvaluedarkmode = localStorage.getItem('value')
       </div>
       <Imganimation className="d-none d-md-flex justify-content-center  ms-5 me-5 ss">
         <img src={terraviva} alt="terraviva" className="img-fluid m-0 " />
-        <Parag className={isWorldAnimation ? 'd-none parag' : 'd-block' && 'd-md-none d-lg-block bg-info mb-0 as'}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci omnis consequuntur doloremque accusamus voluptates, nemo similique deserunt inventore! Facilis ipsum neque nisi temporibus quia ipsam accusamus dicta esse harum repudiandae. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum rem et autem ab eos architecto sint deleniti iure. Maiores doloremque molestiae saepe nulla vitae dignissimos officia quaerat perspiciatis numquam harum? Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat maiores, quia quasi culpa doloribus rem vero! Hic cupiditate accusantium ullam corporis in iure quam. Vero dicta aliquid deleniti iste obcaecati!</Parag>
+        <Parag className={isWorldAnimation ? 'd-none parag' : 'd-block' && 'd-md-none d-lg-block bg-secondary text-white mb-0 as'}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci omnis consequuntur doloremque accusamus voluptates, nemo similique deserunt inventore! Facilis ipsum neque nisi temporibus quia ipsam accusamus dicta esse harum repudiandae. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum rem et autem ab eos architecto sint deleniti iure. Maiores doloremque molestiae saepe nulla vitae dignissimos officia quaerat perspiciatis numquam harum? Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat maiores, quia quasi culpa doloribus rem vero! Hic cupiditate accusantium ullam corporis in iure quam. Vero dicta aliquid deleniti iste obcaecati!</Parag>
         <img src={terramorta}  alt="terraviva" className="img-fluid " />
       </Imganimation>
       {isUserLoggedIn ? (
-        <div className="d-flex justify-content-center gap-3 d-lg-none">
+        <div className="d-flex justify-content-center gap-5 d-lg-none mt-3">
         <CustomButton loading size='lg' variant="success" to="/novacarona">Nova carona</CustomButton>   
       </div>
       ) : (
-      <div className="d-flex justify-content-center gap-3 d-lg-none">
+      <div className="d-flex justify-content-center gap-5 d-lg-none mt-3">
         <CustomButton loading size='lg' variant="success" to="/login">ENTRAR</CustomButton>
         <CustomButton size='lg' variant="success" to="/signin">CRIAR CONTA</CustomButton>
       </div>
       )}
-      <Row>
+      <Row className="d-none d-md-block">
         <Col className="d-flex flex-row gap-2 mb-5 mt-5" xs={12}>
       {
         colors.map((variant) => (
