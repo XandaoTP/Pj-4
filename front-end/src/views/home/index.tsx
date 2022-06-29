@@ -102,7 +102,7 @@ const getvaluedarkmode = localStorage.getItem('value')
           key={variant.color}
           text={variant.color.toLowerCase() === 'light' ? 'dark' : 'white'}
           style={{ width: '18rem' }}
-          className={variant.color.toLocaleLowerCase()}   
+          className={variant.color}   
         >
           <Card.Header>Info</Card.Header>
           <Card.Body>
@@ -147,6 +147,14 @@ const ContainerStyled = styled(Container)`
   flex:1;
 ` 
 const CardStyled = styled(Card)`
+  &.Primary{
+    background-color: #907878 !important;
+    &:hover,
+    &:focus {
+    transform: scale(1.2) rotate(+360deg);
+    transition: transform 3s !important ;
+    }
+  }
   &:hover,
   &:focus { 
   transition: transform 0.8s;
@@ -155,4 +163,5 @@ const CardStyled = styled(Card)`
   border-radius: 15px;
   box-shadow: 5px 5px 5px #000;
   }
+  
 `
