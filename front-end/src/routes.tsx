@@ -10,7 +10,7 @@ import { SignInView } from "./views/signin";
 export function Routes () {
     return (
         <RDroutes>
-            <Route path='/' element={<Home darkmode={false} getvaluedarkmode={""} />} />
+            <Route path='/' element={<Home getvaluedarkmode={""} />} />
             <Route 
             path='/novacarona' 
             element={<PrivateRoute>
