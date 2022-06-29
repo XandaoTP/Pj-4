@@ -16,13 +16,21 @@ type Props = {
 }
 
 export function Home ({worldAnimation = true , darkmode = true}: Props) {
-    const [isdarkmode, setDarkmode] = useState(darkmode)
-    const buttonHandler = () => {
-      setDarkmode(darkmode => !darkmode)
-      localStorage.setItem('value', JSON.stringify(isdarkmode))
-    }
-    const getvaluedarkmode = localStorage.getItem('value')
-    const getvaluedarklight = JSON.parse(getvaluedarkmode || '{}') 
+const getvaluedarkmode = localStorage.getItem('value')
+  const getvaluedarklight = JSON.parse(getvaluedarkmode || '{}') as boolean
+
+  const [isdarkmode, setDarkmode] = useState(() => {
+    const initialState = !getvaluedarklight;
+    return initialState;
+  });
+
+  const buttonHandler = () => {
+    setDarkmode(!isdarkmode)
+    var teste = isdarkmode
+    localStorage.setItem('value', JSON.stringify(isdarkmode))
+    console.log(teste)
+  }
+
     const [isWorldAnimation, setWorldAnimation] = useState(worldAnimation)
     useEffect(() => {
         const scrollChange = () => {
