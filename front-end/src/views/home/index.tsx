@@ -25,9 +25,7 @@ const getvaluedarkmode = localStorage.getItem('value')
 
   const buttonHandler = () => {
     setDarkmode(!isdarkmode)
-    var teste = isdarkmode
     localStorage.setItem('value', JSON.stringify(isdarkmode))
-    console.log(teste)
   }
 
     const [isWorldAnimation, setWorldAnimation] = useState(worldAnimation)
@@ -50,11 +48,16 @@ const getvaluedarkmode = localStorage.getItem('value')
     {"color": "Secondary"},
     {"color": "info"},
     ]
+    function teste(text: any) {
+      return text = 'oioioioioi' ;
+    }
+    const result = colors.filter(teste);
+    console.log(result)
     return (
-    <MainStyled className={getvaluedarklight ? 'black' : 'white'}>
+    <MainStyled>
       <ContainerStyled fluid="sm" className={!getvaluedarklight ? 'bg-dark' : 'bg-white flex-1'}>
       <div className="d-flex justify-content-lg-between" >
-        <button onClick={buttonHandler} className='bg-secondary align-itens-center'>Claro/Escuro</button>
+        <button onClick={buttonHandler} className='bg-secondary align-itens-center'>Dark/Light</button>
         {isUserLoggedIn ? (
           <div className="d-flex justify-content-center gap-3 d-none d-lg-block">
             <CustomButton loading size='lg' variant="success" to="/novacarona"className="mt-3">Nova carona</CustomButton>   
@@ -75,11 +78,11 @@ const getvaluedarkmode = localStorage.getItem('value')
       <div className={!getvaluedarklight ? 'bg-white mt-3 mb-3 ms-5 me-5' : 'bg-dark mt-3 mb-3 ms-5 me-5'}>
           <p className={!getvaluedarklight ? 'text-dark bold text-center ps-0' : 'text-white bold text-center ps-0'}>AND SAVE THE PLANET.</p>
       </div>
-      <img className="d-none d-md-flex justify-content-center  ms-5 me-5">
+      <Imganimation className="d-none d-md-flex justify-content-center  ms-5 me-5 ss">
         <img src={terraviva} alt="terraviva" className="img-fluid m-0 " />
-        <Parag className={isWorldAnimation ? 'd-none parag' : 'd-block' && 'd-md-none d-lg-block bg-secondary text-white mb-0 '}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci omnis consequuntur doloremque accusamus voluptates, nemo similique deserunt inventore! Facilis ipsum neque nisi temporibus quia ipsam accusamus dicta esse harum repudiandae. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum rem et autem ab eos architecto sint deleniti iure. Maiores doloremque molestiae saepe nulla vitae dignissimos officia quaerat perspiciatis numquam harum? Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat maiores, quia quasi culpa doloribus rem vero! Hic cupiditate accusantium ullam corporis in iure quam. Vero dicta aliquid deleniti iste obcaecati!</Parag>
+        <Parag className={isWorldAnimation ? 'd-none parag' : 'd-block' && 'd-md-none d-lg-block bg-secondary text-white mb-0 as'}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci omnis consequuntur doloremque accusamus voluptates, nemo similique deserunt inventore! Facilis ipsum neque nisi temporibus quia ipsam accusamus dicta esse harum repudiandae. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum rem et autem ab eos architecto sint deleniti iure. Maiores doloremque molestiae saepe nulla vitae dignissimos officia quaerat perspiciatis numquam harum? Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat maiores, quia quasi culpa doloribus rem vero! Hic cupiditate accusantium ullam corporis in iure quam. Vero dicta aliquid deleniti iste obcaecati!</Parag>
         <img src={terramorta}  alt="terraviva" className="img-fluid " />
-      </img>
+      </Imganimation>
       {isUserLoggedIn ? (
         <div className="d-flex justify-content-center gap-5 d-lg-none mt-3">
         <CustomButton loading size='lg' variant="success" to="/novacarona">Nova carona</CustomButton>   
@@ -90,8 +93,8 @@ const getvaluedarkmode = localStorage.getItem('value')
         <CustomButton size='lg' variant="success" to="/signin">CRIAR CONTA</CustomButton>
       </div>
       )}
-      <Row className="d-none d-md-block ms-5 me-5">
-        <Col className="d-flex flex-row gap-2 mb-5 mt-5 justify-content-around p-0" xs={12}>
+      <Row className="d-none d-md-block">
+        <Col className="d-flex flex-row gap-2 mb-5 mt-5" xs={12}>
       {
         colors.map((variant) => (
         <CardStyled
@@ -123,19 +126,22 @@ text-align: center;
 vertical-align: middle;
 `
 const Parag = styled.p`
-font-family: 'Arima' !important;
  &:hover,
  &:focus {
   transform: scale(0.9);
  }
 `
-const MainStyled = styled.main`
-  &.black {
-    background-color: #000 !important;
+const Imganimation = styled.div`
+   .ss {
+   &:hover {
+    display: block;
   }
+ }
+`
+const MainStyled = styled.main`
+  background-color: rgb(25,135,84);
   display: flex;
   flex-direction: column;
- 
 `
 const ContainerStyled = styled(Container)`
   flex:1;
@@ -145,8 +151,32 @@ const CardStyled = styled(Card)`
     background-color: #907878 !important;
     &:hover,
     &:focus {
-    transform: scale(1.2) rotate(+360deg);
-    transition: transform 3s !important ;
+    transform: scale(1.2) rotate(+10deg);
+    transition: transform 0.8s !important ;
+    }
+  }
+  &.Success{
+    background-color: #124128 !important;
+    &:hover,
+    &:focus {
+    transform: scale(1.2) rotate(-10deg);
+    transition: transform 0.8s !important ;
+    }
+  }
+  &.Secondary{
+    background-color: #124128 !important;
+    &:hover,
+    &:focus {
+    transform: scale(1.2) rotate(-10deg);
+    transition: transform 0.8s !important ;
+    }
+  }
+  &.info{
+    background-color: #124128 !important;
+    &:hover,
+    &:focus {
+    transform: scale(1.2) rotate(-10deg);
+    transition: transform 0.8s !important ;
     }
   }
   &:hover,
@@ -157,4 +187,5 @@ const CardStyled = styled(Card)`
   border-radius: 15px;
   box-shadow: 5px 5px 5px #000;
   }
+  
 `
