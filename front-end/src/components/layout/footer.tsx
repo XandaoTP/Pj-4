@@ -10,7 +10,7 @@ type Props = {
 export function Footer ({ withoutMargin = false }: Props) {
     return (
         <>
-            <FooterBar className={` text-center ${withoutMargin ? '' : ' mt-2'}`}>
+            <FooterBar className={` text-center ${withoutMargin ? '' : ' mt-0'}`}>
                 <Nav className="flex-column mb-0">
                     <Nav.Link className="text-white">SAIBA MAIS</Nav.Link>
                 </Nav>

@@ -18,6 +18,7 @@ type FormValues = {
     password: string
 }
 export function LoginView () {
+    const darklightmode = JSON.parse(localStorage.getItem('value') || '{}')
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const formik = useFormik({
@@ -56,7 +57,8 @@ export function LoginView () {
     }
     return (
         <Layout>
-            <Container>
+            <div className="d-flex flex-1">
+            <Container className={!darklightmode ? 'bg-dark vh-100' : 'bg-white '}>
                 <Row className="justify-content-center">
                     <Col lg={4}>
                         <PageTitle>Login</PageTitle>
@@ -87,7 +89,7 @@ export function LoginView () {
                     </Col>
                 </Row> 
             </Container>           
-                        
+            </div>             
         </Layout>    
     )
 }

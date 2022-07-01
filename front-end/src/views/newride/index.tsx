@@ -5,9 +5,10 @@ import { EstimateDetails } from "./estimateDetails";
 import { EstimateForm } from "./estimateform";
 
 export function NewRideView () {
+    const darklightmode = JSON.parse(localStorage.getItem('value') || '{}')
     return(
         <Layout>
-            <Container>
+            <Container className={!darklightmode ? 'bg-dark vh-100' : 'bg-white '}>
                 <PageTitle>Ofereça carona</PageTitle>
                 <Row>
                     <Col xs={12} md={6} lg={7}>

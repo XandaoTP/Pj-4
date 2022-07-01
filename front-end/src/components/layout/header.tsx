@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { Container, Nav, Navbar } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
+import styled from "styled-components"
 import { LogoutUser } from "../../services/logoutuser"
 import { deleteUser, selectUserLoggedIn } from "../../store/slices/userSlice"
 
@@ -32,21 +33,24 @@ export function Header ({startTransparent = false}: Props) {
         navigate('/')   
       }
     return (
-        <Navbar fixed='top' expand="lg" bg={isTransparent ? undefined : 'dark'}>
+        <NavBarStyled fixed='top' expand="lg" className="">
         <Container>
-          <Navbar.Brand as={Link} to="/" className='text-white'>ECO Transporte</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/" className='text-white'>ECO Taxi</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             {isUserLoggedIn ? (
-            <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link onClick={handleLogout} >Sair</Nav.Link>
+            <Nav className="ms-auto ">
+              <Nav.Link onClick={handleLogout} className='text-white'>Sair</Nav.Link>
             </Nav>
             ) : (
             <Nav.Link className="d-none">Home</Nav.Link>
             )}
           </Navbar.Collapse>
         </Container>
-      </Navbar>
+      </NavBarStyled>
     )
   }
+
+  const NavBarStyled = styled(Navbar)`
+    background-color: #000;
+  `

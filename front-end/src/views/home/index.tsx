@@ -14,9 +14,8 @@ type Props = {
   getvaluedarkmode: string
 }
 
-export function Home ({worldAnimation = true}: Props) {
-const getvaluedarkmode = localStorage.getItem('value')
-  const getvaluedarklight = JSON.parse(getvaluedarkmode || '{}')
+export function Home ({worldAnimation = true}: Props) { 
+  const getvaluedarklight = JSON.parse(localStorage.getItem('value') || '{}')
 
   const [isdarkmode, setDarkmode] = useState(() => {
     const initialState = !getvaluedarklight;
@@ -94,7 +93,29 @@ const getvaluedarkmode = localStorage.getItem('value')
       </div>
       )}
       <Row className="d-none d-md-block">
-        <Col className="d-flex flex-row gap-2 mb-5 mt-5" xs={12}>
+        <Col className="d-flex flex-row gap-2 mb-3 mt-5 justify-content-center" xs={12}>
+      {
+        colors.map((variant) => (
+        <CardStyled
+          bg={variant.color.toLowerCase()}
+          key={variant.color}
+          text={variant.color.toLowerCase() === 'light' ? 'dark' : 'white'}
+          style={{ width: '18rem' }}
+          className={variant.color}   
+        >
+          <Card.Header>Info</Card.Header>
+          <Card.Body>
+            <Card.Title>Saiba </Card.Title>
+            <Card.Text>
+              {variant.text} 
+            </Card.Text>
+          </Card.Body>
+        </CardStyled>
+  ))}
+  </Col>
+  </Row>
+  <Row className="d-none d-md-block">
+        <Col className="d-flex flex-row gap-2 mb-5 mt-0 justify-content-center" xs={12}>
       {
         colors.map((variant) => (
         <CardStyled
@@ -119,7 +140,9 @@ const getvaluedarkmode = localStorage.getItem('value')
       <Footer withoutMargin />
     </MainStyled>    
     )
-}
+          
+  }
+
 
 const Ppad = styled.div`
 text-align: center;
@@ -147,11 +170,12 @@ const ContainerStyled = styled(Container)`
   flex:1;
 ` 
 const CardStyled = styled(Card)`
-  &.Primary{
+  box-shadow: 5px 5px 5px #000;
+    &.Primary{
     background-color: #907878 !important;
     &:hover,
     &:focus {
-    transform: scale(1.2) rotate(+10deg);
+    transform: scale(1.2) rotate(+5deg);
     transition: transform 0.8s !important ;
     }
   }
@@ -159,23 +183,23 @@ const CardStyled = styled(Card)`
     background-color: #124128 !important;
     &:hover,
     &:focus {
-    transform: scale(1.2) rotate(-10deg);
+    transform: scale(1.2) rotate(-5deg);
     transition: transform 0.8s !important ;
     }
   }
   &.Secondary{
-    background-color: #124128 !important;
+    background-color: #17092a !important;
     &:hover,
     &:focus {
-    transform: scale(1.2) rotate(-10deg);
+    transform: scale(1.2) rotate(+5deg);
     transition: transform 0.8s !important ;
     }
   }
   &.info{
-    background-color: #124128 !important;
+    background-color: #150303 !important;
     &:hover,
     &:focus {
-    transform: scale(1.2) rotate(-10deg);
+    transform: scale(1.2) rotate(-5deg);
     transition: transform 0.8s !important ;
     }
   }

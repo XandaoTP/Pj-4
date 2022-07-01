@@ -11,9 +11,10 @@ export type FormFieldProps = {
 } & FormControlProps & InputHTMLAttributes<HTMLInputElement>
 
 export function FormField ({ controlId, label, error, mask, onAccept, ...inputProps }: FormFieldProps) {
+    const darklightmode = JSON.parse(localStorage.getItem('value') || '{}')
     return (
         <Form.Group className='mb-3' controlId={controlId}>
-            {label && <Form.Label className="mb-1">{label}</Form.Label> }
+            {label && <Form.Label className={!darklightmode ? 'text-white' : 'text-dark'}>{label}</Form.Label> }
             { mask ? (
                 <Form.Control 
                 {...inputProps} 

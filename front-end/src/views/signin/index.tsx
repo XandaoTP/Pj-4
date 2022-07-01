@@ -22,6 +22,7 @@ type FormValues = {
 }
 
 export function SignInView () {
+    const darklightmode = JSON.parse(localStorage.getItem('value') || '{}')
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const formik = useFormik<FormValues>({
@@ -66,7 +67,7 @@ export function SignInView () {
     }
     return (
         <Layout withoutMargin>
-            <Container>
+            <Container  className={!darklightmode ? 'bg-dark vh-100' : 'bg-white '}>
                 <Row className="justify-content-center">
                     <Col lg={4}>
                         <PageTitle> Sign In </PageTitle>
