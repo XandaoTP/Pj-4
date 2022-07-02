@@ -13,7 +13,7 @@ export function SuccessView () {
                     <Col md={4} className="justify-content-center text-center d-flex flex-column">
                         <p className={!darklightmode ? "text-white mt-3" : "text-dark mt-3"}>Obrigado por oferecer carona!</p>
                         <img src={Carona} alt='Carona Sempre' width={159} height={146} className='fluid mt-4 align-self-center mb-5'/>
-                        <CustomButton variant="secondary" size="lg" to='/sucesso'>Oferecer nova carona</CustomButton> 
+                        <CustomButton variant="secondary" size="lg" to='/novacarona'>Oferecer nova carona</CustomButton> 
                     </Col>
                 </Row>
             </Container>
