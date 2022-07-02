@@ -1,5 +1,4 @@
 import { Route, Routes as RDroutes } from "react-router-dom";
-import { EstimateRoute } from "./components/estimateroute";
 import { PrivateRoute } from "./components/privateroute";
 import { PublicOnlyRoute } from "./components/publiconlyroute";
 import { Home } from "./views/home";
