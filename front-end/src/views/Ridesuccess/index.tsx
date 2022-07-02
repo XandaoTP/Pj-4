@@ -21,10 +21,5 @@ export function SuccessView () {
             </div>
         </Layout>
     )
-    
 }
 
-const ContainerStyled = styled(Container)`
-background-image: url(/z);
-    
-`
