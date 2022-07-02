@@ -67,65 +67,67 @@ export function SignInView () {
     }
     return (
         <Layout withoutMargin>
-            <Container  className={!darklightmode ? 'bg-dark vh-100' : 'bg-white '}>
-                <Row className="justify-content-center">
-                    <Col lg={4}>
-                        <PageTitle> Sign In </PageTitle>
-                        <Form onSubmit={formik.handleSubmit}>
-                            <FormField 
-                            label="nome"
-                            placeholder="Digite o seu nome."
-                            {...formProps('name')}                 
-                            />
-                            <FormField 
-                            label="E-mail"
-                            placeholder="Digite o seu E-mail."
-                            {...formProps('email')}
-                            type="email"                    
-                            />
-                            <FormField 
-                            label="Telefone"
-                            placeholder="Digite o seu telefone."
-                            {...formProps('phone')}
-                            mask={[
-                                {mask: '(00) 0000-0000'},
-                                {mask: '(00) 00000-0000'}
-                            ]}
-                            onAccept={value => formik.setFieldValue('phone', value)}                    
-                            />
-                            <FormField 
-                            label="Senha"
-                            placeholder="Digite sua senha."
-                            {...formProps('password')}
-                            type="password"                
-                            />
-                            <Form.Group 
-                            controlId="input-agree">
-                            <Form.Check 
-                                {...formProps('agree')}
-                                type="checkbox"
-                                label={<>Li e aceito os <a href='/termosdeuso.pdf' target='_blank'>termos de uso.</a></>}
-                            />
-                            {formik.touched.agree && formik.errors.agree &&(
-                                <Form.Control.Feedback type='invalid' className="d-block">
-                                   {formik.errors.agree}     
-                                </Form.Control.Feedback>
-                            )}
-                            </Form.Group>
-                            <div className="d-grid mt-3 mb-3">
-                            <CustomButton
-                             type="submit"
-                              loading={formik.isValidating || formik.isSubmitting}
-                              disabled={formik.isValidating || formik.isSubmitting}
-                            >
-                                Criar Conta
-                            </CustomButton>
-                            </div>
-                            <p className="text-center">Já possui conta? <br/><Link to='/login'>Acesse</Link></p>
-                        </Form>
-                    </Col>
-                </Row>   
-            </Container>
+            <div className={!darklightmode ? 'bg-dark vh-100' : 'bg-white '}>
+                <Container>
+                    <Row className="justify-content-center">
+                        <Col lg={4}>
+                            <PageTitle> Sign In </PageTitle>
+                            <Form onSubmit={formik.handleSubmit}>
+                                <FormField 
+                                label="nome"
+                                placeholder="Digite o seu nome."
+                                {...formProps('name')}                 
+                                />
+                                <FormField 
+                                label="E-mail"
+                                placeholder="Digite o seu E-mail."
+                                {...formProps('email')}
+                                type="email"                    
+                                />
+                                <FormField 
+                                label="Telefone"
+                                placeholder="Digite o seu telefone."
+                                {...formProps('phone')}
+                                mask={[
+                                    {mask: '(00) 0000-0000'},
+                                    {mask: '(00) 00000-0000'}
+                                ]}
+                                onAccept={value => formik.setFieldValue('phone', value)}                    
+                                />
+                                <FormField 
+                                label="Senha"
+                                placeholder="Digite sua senha."
+                                {...formProps('password')}
+                                type="password"                
+                                />
+                                <Form.Group 
+                                controlId="input-agree">
+                                <Form.Check 
+                                    {...formProps('agree')}
+                                    type="checkbox"
+                                    label={<>Li e aceito os <a href='/termosdeuso.pdf' target='_blank'>termos de uso.</a></>}
+                                />
+                                {formik.touched.agree && formik.errors.agree &&(
+                                    <Form.Control.Feedback type='invalid' className="d-block">
+                                    {formik.errors.agree}     
+                                    </Form.Control.Feedback>
+                                )}
+                                </Form.Group>
+                                <div className="d-grid mt-3 mb-3">
+                                <CustomButton
+                                type="submit"
+                                loading={formik.isValidating || formik.isSubmitting}
+                                disabled={formik.isValidating || formik.isSubmitting}
+                                >
+                                    Criar Conta
+                                </CustomButton>
+                                </div>
+                                <p className="text-center">Já possui conta? <br/><Link to='/login'>Acesse</Link></p>
+                            </Form>
+                        </Col>
+                    </Row>   
+                </Container>
+            </div>    
         </Layout>
     )
 }

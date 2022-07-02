@@ -8,17 +8,19 @@ export function NewRideView () {
     const darklightmode = JSON.parse(localStorage.getItem('value') || '{}')
     return(
         <Layout>
-            <Container className={!darklightmode ? 'bg-dark vh-100' : 'bg-white '}>
-                <PageTitle>Ofereça carona</PageTitle>
-                <Row>
-                    <Col xs={12} md={6} lg={7}>
-                        <EstimateForm />
-                    </Col>
-                    <Col xs={12} md={6} lg={5}>
-                        <EstimateDetails />
-                    </Col>
-                </Row>
-            </Container>
+            <div className={!darklightmode ? 'bg-dark vh-100' : 'bg-white '}>
+                <Container>
+                    <PageTitle>Ofereça carona</PageTitle>
+                    <Row>
+                        <Col xs={12} md={6} lg={7}>
+                            <EstimateForm />
+                        </Col>
+                        <Col xs={12} md={6} lg={5}>
+                            <EstimateDetails />
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
         </Layout>
     )
 }

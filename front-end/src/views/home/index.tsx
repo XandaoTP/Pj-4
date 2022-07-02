@@ -47,11 +47,6 @@ export function Home ({worldAnimation = true}: Props) {
     {"color": "Secondary"},
     {"color": "info"},
     ]
-    function teste(text: any) {
-      return text = 'oioioioioi' ;
-    }
-    const result = colors.filter(teste);
-    console.log(result)
     return (
     <MainStyled>
       <ContainerStyled fluid="sm" className={!getvaluedarklight ? 'bg-dark' : 'bg-white flex-1'}>

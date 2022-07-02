@@ -57,8 +57,8 @@ export function LoginView () {
     }
     return (
         <Layout>
-            <div className="d-flex flex-1">
-            <Container className={!darklightmode ? 'bg-dark vh-100' : 'bg-white '}>
+            <div className={!darklightmode ? 'bg-dark vh-100 d-flex flex-1' : 'bg-white d-flex flex-1'}>
+            <Container>
                 <Row className="justify-content-center">
                     <Col lg={4}>
                         <PageTitle>Login</PageTitle>
