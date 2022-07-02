@@ -1,5 +1,4 @@
 import {  Col, Container, Row } from "react-bootstrap";
-import styled from "styled-components";
 import { Layout } from "../../components/layout";
 import Carona from "../../assetes/img/LOGO_CARONA.png"
 import { CustomButton } from "../../components/custombutton";
