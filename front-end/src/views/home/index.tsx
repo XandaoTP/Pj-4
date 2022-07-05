@@ -42,8 +42,8 @@ export function Home ({worldAnimation = true}: Props) {
         }
       }, [isWorldAnimation, worldAnimation])
     const isUserLoggedIn = useSelector(selectUserLoggedIn)
-    const colors =  [ {"color": "Primary", "text": "oioioioioi"},
-    {"color": "Success"},
+    const colors =  [ {"color": "Primary", "text": "Ofereça carona"},
+    {"color": "Success", "text": "Salve o Planeta"},
     {"color": "Secondary"},
     {"color": "info"},
     ]
@@ -210,4 +210,4 @@ const CardStyled = styled(Card)`
 const DarkLightBtnStyled = styled.button`
   height: 30px;
   background: linear-gradient(111deg, #4c4848 50%, white 50%) !important;
-`
+  `
