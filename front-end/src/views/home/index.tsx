@@ -79,11 +79,11 @@ export function Home ({worldAnimation = true}: Props) {
       </Imganimation>
       {isUserLoggedIn ? (
         <div className="d-flex justify-content-center gap-5 d-lg-none mt-3 mb-3">
-        <CustomButton loading size='lg' variant="success" to="/novacarona">Nova carona</CustomButton>   
+        <CustomButton  size='lg' variant="success" to="/novacarona">Nova carona</CustomButton>   
       </div>
       ) : (
       <div className="d-flex justify-content-center gap-5 d-lg-none mt-3 mb-3">
-        <CustomButton loading size='lg' variant="success" to="/login">ENTRAR</CustomButton>
+        <CustomButton size='lg' variant="success" to="/login">ENTRAR</CustomButton>
         <CustomButton size='lg' variant="success" to="/signin">CRIAR CONTA</CustomButton>
       </div>
       )}
