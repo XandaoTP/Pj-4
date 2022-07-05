@@ -51,15 +51,15 @@ export function Home ({worldAnimation = true}: Props) {
     <MainStyled>
       <ContainerStyled fluid="sm" className={!getvaluedarklight ? 'bg-dark' : 'bg-white flex-1'}>
       <div className="d-flex justify-content-lg-between" >
-        <button onClick={buttonHandler} className='bg-secondary align-itens-center'>Dark/Light</button>
+        <DarkLightBtnStyled onClick={buttonHandler} className='bg-secondary align-itens-center text-white'>Dark/<span className="text-dark">Light</span></DarkLightBtnStyled>
         {isUserLoggedIn ? (
           <div className="d-flex justify-content-center gap-3 d-none d-lg-block">
             <CustomButton loading size='lg' variant="success" to="/novacarona"className="mt-3">Nova carona</CustomButton>   
           </div>
         ) : (
-          <div className="d-flex justify-content-center gap-3 d-none d-lg-block">
+          <div className="d-flex justify-content-center gap-3 d-none d-lg-block mt-3">
             <CustomButton size='sm' variant="success" to="/login">ENTRAR</CustomButton>
-            <CustomButton size='sm' className="ms-3" variant="success" to="/signin">CRIAR CONTA</CustomButton>
+            <CustomButton size='sm' className="ms-3 " variant="success" to="/signin">CRIAR CONTA</CustomButton>
           </div>
       )}
       </div>
@@ -157,7 +157,7 @@ const Imganimation = styled.div`
  }
 `
 const MainStyled = styled.main`
-  background-color: rgb(25,135,84);
+  background-color: #003d21;
   display: flex;
   flex-direction: column;
 `
@@ -206,5 +206,8 @@ const CardStyled = styled(Card)`
   border-radius: 15px;
   box-shadow: 5px 5px 5px #000;
   }
-  
+`
+const DarkLightBtnStyled = styled.button`
+  height: 30px;
+  background: linear-gradient(111deg, #4c4848 50%, white 50%) !important;
 `
