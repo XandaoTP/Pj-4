@@ -78,11 +78,11 @@ export function Home ({worldAnimation = true}: Props) {
         <img src={terramorta}  alt="terraviva" className="img-fluid " />
       </Imganimation>
       {isUserLoggedIn ? (
-        <div className="d-flex justify-content-center gap-5 d-lg-none mt-3 mb-3">
+        <div className="d-flex justify-content-center  d-lg-none mt-3 mb-5">
         <CustomButton  size='lg' variant="success" to="/novacarona">Nova carona</CustomButton>   
       </div>
       ) : (
-      <div className="d-flex justify-content-center gap-5 d-lg-none mt-3 mb-3">
+      <div className="d-flex justify-content-center gap-3 d-lg-none mt-3 mb-5">
         <CustomButton size='lg' variant="success" to="/login">ENTRAR</CustomButton>
         <CustomButton size='lg' variant="success" to="/signin">CRIAR CONTA</CustomButton>
       </div>
