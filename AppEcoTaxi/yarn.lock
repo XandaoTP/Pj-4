@@ -4772,6 +4772,11 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.2.4.tgz#eca284f75d2965079309dc0ad9255abb2ebc1632"
   integrity sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==
 
+link@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/link/-/link-1.5.0.tgz#4dfa7b6eb524057eec43b56ad058529c1fda5976"
+  integrity sha512-+xsWpo98a99oAsrVGQlkFqQE+t/Qs6G+QJP1hzUdjWk6nuYG//E2u3YH8pYd3VG8CNpUoKXgVgk2HeQvPRsrFA==
+
 locate-path@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/locate-path/-/locate-path-3.0.0.tgz#dbec3b3ab759758071b58fe59fc41871af21400e"
@@ -5863,10 +5868,10 @@ react-native-svg@^12.3.0:
     css-select "^4.2.1"
     css-tree "^1.0.0-alpha.39"
 
-react-native@0.69.0:
-  version "0.69.0"
-  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.69.0.tgz#16cb7f02d8253fb4e69ea56e878afd1e797b0292"
-  integrity sha512-TBaoNMaxxVLRNNxNXmi8sauxSv6LXF5O6apoUPHVYC1Tr9dP0DqiQP2ngHHJM9ysxxIkX47OTho028HRbkgTCA==
+react-native@^0.69.1:
+  version "0.69.1"
+  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.69.1.tgz#093363ea697185b5d8f0e523fce3654b833ad0be"
+  integrity sha512-585NmzSuYUfday8YsfqgreFAZbXRI/kxKsiuaShwGHgkwdtmE5qA7WfGItgxZBOZD6g/Hm1YBUqSwIm07tPa6A==
   dependencies:
     "@jest/create-cache-key-function" "^27.0.1"
     "@react-native-community/cli" "^8.0.0"
