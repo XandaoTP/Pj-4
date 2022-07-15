@@ -1,12 +1,31 @@
-import React from "react";
-import { StyleSheet, Text } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, Text, TextInput } from "react-native";
 import { Container } from "../../components/Container";
+import { InputFormField } from "../../components/inputFormField";
 
 
 export function LoginScreenView () {
+    const [inputValue, setInputValue] = useState('')
     return(
         <Container padding>
-            <Text>oi</Text>
+            <InputFormField
+            label='Usuário'
+            placeholder="Digite seu usuário " 
+            value={inputValue} 
+            onChangeText={newInputValue => setInputValue(newInputValue)}
+            keyboardType= {'twitter'}
+            error='s'
+            isValid
+            />
+             <InputFormField
+            label='Usuário'
+            placeholder="Digite seu usuário " 
+            value={inputValue} 
+            onChangeText={newInputValue => setInputValue(newInputValue)}
+            keyboardType= {'twitter'}
+            error='s'
+            isValid
+            />
         </Container>      
     )
 }
