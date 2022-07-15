@@ -1,20 +1,28 @@
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React from "react";
-import { Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
-import { CustomButton } from "../../assets/components/custombutton";
+import { Image, SafeAreaView, StyleSheet, View } from "react-native";
+import { CustomButton } from "../../components/custombutton";
+import { CustomText } from "../../components/customtext";
 import logo from '../../assets/img/mudanca-climatica.jpg'
+import { RootStackParamList } from "../../routes";
 
-export function HomeScreen () {
+type Props = NativeStackScreenProps<RootStackParamList, 'Home'>
+
+export function HomeScreen ({navigation} : Props) {
+    const EnterScreenView = () => {
+        navigation.navigate('Login');
+    } 
     return (
         <SafeAreaView style={styles.area}>
             <View style={styles.container}>
-                <Text 
+                <CustomText bold
                 style={styles.text}>
                     Eco Taxi
-                </Text>
+                </CustomText>
                 <Image 
                 source={logo}
                 style={styles.logo}/>
-                <CustomButton>Entrar</CustomButton>
+                <CustomButton onPress={EnterScreenView}>Entrar</CustomButton>
             </View>
         </SafeAreaView>
     )
@@ -34,7 +42,7 @@ const styles = StyleSheet.create({
     },
     text: {
         color: '#1f6920',
-        fontSize: 30,
+        fontSize: 50,
         textShadowColor: 'rgba(9, 131, 23, 0.25)',
         textShadowOffset: {width: 0, height: 4},
         textShadowRadius: 1,

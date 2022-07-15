@@ -1,11 +1,13 @@
 import { NavigationContainer } from "@react-navigation/native"
 import React from "react"
-import { HomeScreen } from "./screens/home"
+import { RoutesScreen } from "./routes";
+
+
 
 export default function App () {
     return (
         <NavigationContainer>
-            <HomeScreen />
+            <RoutesScreen />
         </NavigationContainer>
-    )        
+    );        
 }

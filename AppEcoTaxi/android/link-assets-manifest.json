@@ -1,0 +1,33 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/CormorantSC-Bold.ttf",
+      "sha1": "87a50ec1dcdc64a45e73b7a1829f449a23231eec"
+    },
+    {
+      "path": "src/assets/fonts/CormorantSC-Light.ttf",
+      "sha1": "1ed508b0f3040d2c6ea3f234f861d211183cd6e5"
+    },
+    {
+      "path": "src/assets/fonts/CormorantSC-Medium.ttf",
+      "sha1": "fb12615e8b33af47f166f29bd6a7b2268383401a"
+    },
+    {
+      "path": "src/assets/fonts/CormorantSC-Regular.ttf",
+      "sha1": "3dd3f9fa502222f27f6f4506bc504694a6babceb"
+    },
+    {
+      "path": "src/assets/fonts/CormorantSC-SemiBold.ttf",
+      "sha1": "c7597b91e74f1050e5a436c9682e478fd8a6f74d"
+    },
+    {
+      "path": "src/assets/fonts/EduSABeginner-Bold.ttf",
+      "sha1": "effa24f1a7a84e27c684795ab1b582b9d65c4ea5"
+    },
+    {
+      "path": "src/assets/fonts/EduSABeginner-Regular.ttf",
+      "sha1": "311d2c445cad3954ba5e6ad6730cb5029ec3a096"
+    }
+  ]
+}
