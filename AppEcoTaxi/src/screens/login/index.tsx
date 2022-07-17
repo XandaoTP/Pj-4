@@ -1,11 +1,12 @@
 import React from "react";
-import { Formik, useFormik } from "formik";
-import { StyleSheet, Text, TextInput } from "react-native";
+import { useFormik } from "formik";
 import { Container } from "../../components/Container";
 import { InputFormField } from "../../components/inputFormField";
 import { CustomButton } from "../../components/custombutton";
 import * as yup from 'yup';
 import { LoginUser } from "../../services/login";
+import Toast from 'react-native-toast-message'
+import { firebaseAuthErrors } from "../../utils/FirebaseErrors";
 
 type InputValues = {
     email: string
@@ -27,7 +28,11 @@ export function LoginScreenView () {
              const user = await LoginUser(values)
              console.log('sucesso', user)
             }catch(error) {
-                console.log(error);
+                const errorMsg = firebaseAuthErrors(error) && (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') ? 'Usuario ou senha inválido.' : 'Falha ao conectar.Tente novamente.'
+                Toast.show ({
+                    type: 'error',
+                    text1: errorMsg,
+                })
             };
         },
     });
