@@ -6,7 +6,10 @@ import { RidersScreen } from "./screens/rides"
 import auth from '@react-native-firebase/auth'
 import { getUser } from "./services/getuser"
 import { useDispatch, useSelector } from "react-redux"
-import { deleteUser, selectUserLoggedIn, updateUser } from "./store/slices/userSlice"
+import { deleteUser, selectLoadingUser, selectUserLoggedIn, updateUser } from "./store/slices/userSlice"
+import { Button } from "react-native"
+import { LogoutButton } from "./components/logoutButton"
+import { Loading } from "./components/loading"
 
 export type RootStackParamList = {
     Home: undefined
@@ -27,7 +30,11 @@ export function RoutesScreen () {
         }
     })    
     }, [dispatch])
-     const isUserLoggedIn = useSelector(selectUserLoggedIn)
+    const isUserLoggedIn = useSelector(selectUserLoggedIn)
+    const isLoadingUser = useSelector(selectLoadingUser)
+    if(isLoadingUser) {
+      return <Loading />  
+    }
     return(
         <Stack.Navigator screenOptions={{
            animation : 'slide_from_right',
@@ -49,6 +56,7 @@ export function RoutesScreen () {
             ):(
                 <Stack.Screen name='Corridas' component={RidersScreen} options={{
                 title: 'Verificar corridas',
+                headerRight: () => LogoutButton()
                 }} />
             )}         
         </Stack.Navigator>        
