@@ -1,8 +1,12 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import { HomeScreen } from "./screens/home"
 import { LoginScreenView } from "./screens/login"
 import { RidersScreen } from "./screens/rides"
+import auth from '@react-native-firebase/auth'
+import { getUser } from "./services/getuser"
+import { useDispatch } from "react-redux"
+import { deleteUser, updateUser } from "./store/slices/userSlice"
 
 export type RootStackParamList = {
     Home: undefined
@@ -12,6 +16,17 @@ export type RootStackParamList = {
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export function RoutesScreen () {
+    const dispatch = useDispatch()
+    useEffect (() => {
+    auth().onAuthStateChanged(async currentUSer => {
+        if(currentUSer) {
+           const user =  await getUser(currentUSer.uid)
+           dispatch(updateUser(user))
+        } else {
+            dispatch(deleteUser())
+        }
+    })    
+    }, [dispatch])
     return(
         <Stack.Navigator screenOptions={{
            animation : 'slide_from_right',
