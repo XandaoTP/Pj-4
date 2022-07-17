@@ -7,6 +7,7 @@ type Props = {
     error?: string;
     isInvalid?: boolean;
     isValid?: boolean;
+    loading?: boolean;
 } & TextInputProps;
 
 export function InputFormField ({label, error, isInvalid = false, isValid = false, ...otherProps}: Props) {
@@ -14,7 +15,8 @@ export function InputFormField ({label, error, isInvalid = false, isValid = fals
         <View style={styles.spaceView}>
             <CustomText style={styles.label}>{label}</CustomText>
             <TextInput style={[styles.input, isInvalid ? styles.invalidInput : {}, isValid ? styles.validInput : {}]} {...otherProps} />
-            {error && <CustomText style={styles.errorText}>Informe o campo corretamente</CustomText> }
+            {isInvalid && error && (
+            <CustomText style={styles.errorText}>{error}</CustomText> )}
         </View>
     )
 }

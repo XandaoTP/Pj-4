@@ -5,6 +5,7 @@ import { CustomText } from "../customtext";
 type Props = TouchableOpacityProps & {
     variant?: 'primary' | 'success'
     size?: 'md' | 'lg'
+    loading?: boolean
 } 
 
 export function CustomButton ({children, variant = 'primary', size = 'md', ...otherProps}: Props ) {
