@@ -10,6 +10,8 @@ import { firebaseAuthErrors } from "../../utils/FirebaseErrors";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../routes";
 import { StyleSheet } from "react-native";
+import { useDispatch } from "react-redux";
+import { updateUser } from "../../store/slices/userSlice";
 
 type InputValues = {
     email: string
@@ -18,6 +20,7 @@ type InputValues = {
 type Props = NativeStackScreenProps<RootStackParamList, 'Login'>
 
 export function LoginScreenView ({ navigation }: Props) {
+    const dispatch = useDispatch()
     const formik = useFormik<InputValues>({
         initialValues: {
             email: '',
@@ -30,6 +33,7 @@ export function LoginScreenView ({ navigation }: Props) {
         onSubmit: async (values) => {
             try {
              const user = await LoginUser(values)
+             dispatch(updateUser(user))
              navigation.navigate('Corridas')
             }catch(error) {
                 const errorMsg = firebaseAuthErrors(error) && (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') ? 'Usuario ou senha inválido.' : 'Falha ao conectar.Tente novamente.'
