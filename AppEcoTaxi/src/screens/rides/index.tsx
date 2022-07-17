@@ -7,8 +7,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faBookOpen as FaSolid } from "@fortawesome/free-solid-svg-icons";
 import { faAddressBook } from "@fortawesome/free-regular-svg-icons";
 import { getRiders } from "../../services/getRiders";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../store/slices/userSlice";
+import { loadRiders } from "../../store/slices/ridersSlice";
+import { useAppDispatch } from "../../store/store";
 
 
 const Tab = createBottomTabNavigator()
@@ -16,16 +18,10 @@ const Tab = createBottomTabNavigator()
 export function RidersScreen () {
     const user = useSelector(selectUser)
     const userId = user?.id || '';
+    const dispatch = useAppDispatch()
     useEffect (() => {
-        const fetchRiders = async () => {
-            if(!user) {
-                return
-            }
-            const riders = await getRiders(userId)
-            console.log('ss',riders)
-        }
-        fetchRiders()
-    }, [userId])
+       dispatch(loadRiders(userId))
+    }, [userId, dispatch])
     return (
         <Tab.Navigator screenOptions={ ({ route }) => ({
             headerShown: false,
