@@ -5,8 +5,8 @@ import { LoginScreenView } from "./screens/login"
 import { RidersScreen } from "./screens/rides"
 import auth from '@react-native-firebase/auth'
 import { getUser } from "./services/getuser"
-import { useDispatch } from "react-redux"
-import { deleteUser, updateUser } from "./store/slices/userSlice"
+import { useDispatch, useSelector } from "react-redux"
+import { deleteUser, selectUserLoggedIn, updateUser } from "./store/slices/userSlice"
 
 export type RootStackParamList = {
     Home: undefined
@@ -27,6 +27,7 @@ export function RoutesScreen () {
         }
     })    
     }, [dispatch])
+     const isUserLoggedIn = useSelector(selectUserLoggedIn)
     return(
         <Stack.Navigator screenOptions={{
            animation : 'slide_from_right',
@@ -38,13 +39,18 @@ export function RoutesScreen () {
             fontFamily: 'CormorantSC-Medium'
            }
         }}>
-            <Stack.Screen name='Home' component={HomeScreen} options={{headerShown : false,}}/>
-            <Stack.Screen name='Login' component={LoginScreenView} options={{
-                title: 'Acessar caronas',
-            }} />
-            <Stack.Screen name='Corridas' component={RidersScreen} options={{
+            {!isUserLoggedIn ? (
+                <>
+                    <Stack.Screen name='Home' component={HomeScreen} options={{headerShown : false,}}/>
+                    <Stack.Screen name='Login' component={LoginScreenView} options={{
+                     title: 'Acessar caronas',
+                 }} />
+                </>
+            ):(
+                <Stack.Screen name='Corridas' component={RidersScreen} options={{
                 title: 'Verificar corridas',
-            }} />
+                }} />
+            )}         
         </Stack.Navigator>        
                 
     )
