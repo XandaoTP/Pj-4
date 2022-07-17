@@ -3,7 +3,9 @@ import { createAsyncThunk, createSlice, SerializedError } from "@reduxjs/toolkit
 import { StatusBar } from "react-native"
 import { LoadingStatus } from "../../entities/loadingStatus"
 import { Riders } from "../../entities/riders"
+import { RidersStatus } from "../../entities/ridersStatus"
 import { getRiders } from "../../services/getRiders"
+import { AllReducerState } from "../store"
 
 export const loadRiders = createAsyncThunk(
     'riders/loadRiders',
@@ -47,3 +49,6 @@ const slice = createSlice({
 
 export default slice.reducer;
 
+export const SelectOpenRiders = (state: AllReducerState) => state.Riders.rider.filter(rider => rider.state === RidersStatus.CREATED)
+export const SelectAcceeptedRiders = (state: AllReducerState) => state.Riders.rider.filter(rider => rider.state === RidersStatus.ACCEPTED)
+export const SelectFinishedRiders = (state: AllReducerState) => state.Riders.rider.filter(rider => rider.state === RidersStatus.FINISHED)
