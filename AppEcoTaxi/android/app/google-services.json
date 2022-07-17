@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "988652276946",
+    "project_id": "eco-taxi-a7a40",
+    "storage_bucket": "eco-taxi-a7a40.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:988652276946:android:3271bd1a27c6bd3633310b",
+        "android_client_info": {
+          "package_name": "com.appecotaxi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "988652276946-7bq0bmc5kbnop2nobcdntm0d3gmn6drm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3KLZFrELiywYR-MztIagGeVzQXq1JOWE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "988652276946-7bq0bmc5kbnop2nobcdntm0d3gmn6drm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
