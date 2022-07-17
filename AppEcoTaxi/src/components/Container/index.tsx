@@ -17,7 +17,7 @@ export function Container ({children, padding = false, center = false}: Props) {
 
 const styles = StyleSheet.create({
     container:{
-        backgroundColor: '#000',
+        backgroundColor: '#858181',
         flex: 1
     },
     padding: {

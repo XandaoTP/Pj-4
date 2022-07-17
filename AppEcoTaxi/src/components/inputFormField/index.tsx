@@ -14,7 +14,7 @@ export function InputFormField ({label, error, isInvalid = false, isValid = fals
     return (
         <View style={styles.spaceView}>
             <CustomText style={styles.label}>{label}</CustomText>
-            <TextInput style={[styles.input, isInvalid ? styles.invalidInput : {}, isValid ? styles.validInput : {}]} {...otherProps} />
+            <TextInput style={[styles.textcolor,styles.input, isInvalid ? styles.invalidInput : {}, isValid ? styles.validInput : {}]} {...otherProps} />
             {isInvalid && error && (
             <CustomText style={styles.errorText}>{error}</CustomText> )}
         </View>
@@ -23,14 +23,18 @@ export function InputFormField ({label, error, isInvalid = false, isValid = fals
 
 const styles = StyleSheet.create({
     label:{
-        paddingLeft: 14
+        paddingLeft: 14,
+        color: '#ffffff'
+    },
+    textcolor: {
+        color: '#ffff'
     },
     input:{
         borderWidth: 2,
         borderColor:'#a7a7a752',
         borderRadius: 55,
         paddingLeft: 15,
-        marginVertical: 6
+        marginVertical: 6,
     },
     invalidInput:{
         borderColor: '#9e1a1a'
@@ -43,5 +47,8 @@ const styles = StyleSheet.create({
     },
     spaceView:{
         marginBottom: 8
+    },
+    placeHolderText: {
+        color: '#ffff'
     }
 })

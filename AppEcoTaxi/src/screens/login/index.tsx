@@ -7,13 +7,17 @@ import * as yup from 'yup';
 import { LoginUser } from "../../services/login";
 import Toast from 'react-native-toast-message'
 import { firebaseAuthErrors } from "../../utils/FirebaseErrors";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../../routes";
+import { StyleSheet } from "react-native";
 
 type InputValues = {
     email: string
     password: string
 }
+type Props = NativeStackScreenProps<RootStackParamList, 'Login'>
 
-export function LoginScreenView () {
+export function LoginScreenView ({ navigation }: Props) {
     const formik = useFormik<InputValues>({
         initialValues: {
             email: '',
@@ -26,7 +30,7 @@ export function LoginScreenView () {
         onSubmit: async (values) => {
             try {
              const user = await LoginUser(values)
-             console.log('sucesso', user)
+             navigation.navigate('Corridas')
             }catch(error) {
                 const errorMsg = firebaseAuthErrors(error) && (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') ? 'Usuario ou senha inválido.' : 'Falha ao conectar.Tente novamente.'
                 Toast.show ({
@@ -64,3 +68,8 @@ export function LoginScreenView () {
     )
 }
 
+const styles = StyleSheet.create({
+    textcolor:{
+        color: '#ffff'
+    }
+})

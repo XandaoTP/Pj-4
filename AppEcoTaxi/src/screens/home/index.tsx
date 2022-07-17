@@ -32,7 +32,7 @@ export function HomeScreen ({navigation} : Props) {
 const styles = StyleSheet.create({
     area: {
         flex:1,
-        backgroundColor: '#232323',
+        backgroundColor: '#5f5a5a',
     },
     container: {
         alignItems: 'center',
