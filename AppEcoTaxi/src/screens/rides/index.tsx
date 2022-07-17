@@ -15,16 +15,17 @@ const Tab = createBottomTabNavigator()
 
 export function RidersScreen () {
     const user = useSelector(selectUser)
+    const userId = user?.id || '';
     useEffect (() => {
         const fetchRiders = async () => {
             if(!user) {
                 return
             }
-            const riders = await getRiders(user.id)
+            const riders = await getRiders(userId)
             console.log('ss',riders)
         }
         fetchRiders()
-    }, [user])
+    }, [userId])
     return (
         <Tab.Navigator screenOptions={ ({ route }) => ({
             headerShown: false,

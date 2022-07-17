@@ -13,5 +13,5 @@ export type Riders = {
     friendlyId: string
     partnerValue: number
     state: RidersStatus
-    createdAt: Date
+    createdAt: string
 }

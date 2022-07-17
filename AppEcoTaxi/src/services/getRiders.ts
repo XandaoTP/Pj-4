@@ -42,7 +42,7 @@ const docsToRiders = (RidersDoc : FirebaseFirestoreTypes.QuerySnapshot<FirebaseF
     value,
     partnerValue,
     user,
-    createdAt,
+    createdAt: createdAt.toDate().toISOString(),
     departure,
     destination,
     comments,
