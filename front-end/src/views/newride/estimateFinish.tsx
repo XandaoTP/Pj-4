@@ -17,7 +17,7 @@ export function PaypalFinish () {
     }
     const handlePayPalSuccess = async (details: OrderResponseBody) => {
         try {
-            CreateRide({
+            await CreateRide({
                 estimate: currentEstimate,
                 gatwayId: details.id,
                 userId: user?.id
