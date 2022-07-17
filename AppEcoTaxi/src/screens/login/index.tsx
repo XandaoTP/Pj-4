@@ -5,6 +5,7 @@ import { Container } from "../../components/Container";
 import { InputFormField } from "../../components/inputFormField";
 import { CustomButton } from "../../components/custombutton";
 import * as yup from 'yup';
+import { LoginUser } from "../../services/login";
 
 type InputValues = {
     email: string
@@ -22,7 +23,12 @@ export function LoginScreenView () {
             password: yup.string().required('Informe a senha.')
         }),
         onSubmit: async (values) => {
-
+            try {
+             const user = await LoginUser(values)
+             console.log('sucesso', user)
+            }catch(error) {
+                console.log(error);
+            };
         },
     });
     const getInputProps = (InputName: keyof InputValues) => ({
