@@ -11,7 +11,7 @@ type NewRide = {
 
 export const CreateRide = async ({ estimate, gatwayId, userId }: NewRide): Promise<void> => {
     const friendlyId = new Date().getTime().toString(36).toUpperCase()
-    const partnerValue = parseFloat((estimate.value = 0.85).toFixed(2))
+    const partnerValue = parseFloat((estimate.value * 0.55).toFixed(2))
     const { id: estimateId, ...estimateData } = estimate
     const newRideData = {
         ...estimateData,
