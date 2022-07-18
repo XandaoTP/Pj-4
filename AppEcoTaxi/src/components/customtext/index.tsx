@@ -15,6 +15,7 @@ export function CustomText({style, bold = false, ...props }: Props) {
 const styles = StyleSheet.create({
   text: {
     fontFamily: 'CormorantSC-Regular',
+    color: '#000000'
   },
   bold: {
     fontFamily: 'CormorantSC-Bold'

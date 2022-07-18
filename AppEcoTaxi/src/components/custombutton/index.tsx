@@ -21,13 +21,16 @@ const styles = StyleSheet.create({
         borderRadius: 55,
     },
     textBase: {
-        color: '#ffffff',
+        color: '#000000',
+        textAlign: 'center',
+        fontSize: 18,
+        fontFamily: 'CormorantSC-Regular'
     },
     primary: {
-        backgroundColor: '#31008b'
+        backgroundColor: '#05551e'
     },
     success:{
-        backgroundColor: '#078632'
+        backgroundColor: '#1b271f'
     },
     lg:{
         paddingHorizontal: 25,

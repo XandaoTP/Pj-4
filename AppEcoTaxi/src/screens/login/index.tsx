@@ -57,8 +57,9 @@ export function LoginScreenView ({ navigation }: Props) {
             <InputFormField
             {...getInputProps('email')}
             label='Usuário'
-            placeholder="Digite seu usuário " 
+            placeholder="Digite seu usuário" 
             keyboardType= {'email-address'}
+            placeholderTextColor="#000" 
             />
              <InputFormField
             {...getInputProps('password')}
@@ -66,6 +67,7 @@ export function LoginScreenView ({ navigation }: Props) {
             placeholder="Digite sua senha." 
             keyboardType= {'twitter'}
             secureTextEntry
+            placeholderTextColor="#000"
             />
             <CustomButton onPress={formik.handleSubmit} disabled={formik.isValidating || formik.isSubmitting} loading={formik.isValidating || formik.isSubmitting}>Entrar</CustomButton>
         </Container>      
@@ -74,6 +76,6 @@ export function LoginScreenView ({ navigation }: Props) {
 
 const styles = StyleSheet.create({
     textcolor:{
-        color: '#ffff'
+        color: '#060606'
     }
 })
