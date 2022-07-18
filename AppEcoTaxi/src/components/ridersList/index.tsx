@@ -1,8 +1,12 @@
 import React from "react"
 import { StyleSheet } from "react-native"
+import { useSelector } from "react-redux"
+import { LoadingStatus } from "../../entities/loadingStatus"
 import { Riders } from "../../entities/riders"
+import { LoadingRidesStatus } from "../../store/slices/ridersSlice"
 import { Container } from "../Container"
 import { CustomText } from "../customtext"
+import { Loading } from "../loading"
 
 type Props = {
     riders: Riders[]
@@ -11,6 +15,10 @@ type Props = {
 }
 
 export function RidersList ({ riders, NoRidersMessage }: Props) {
+    const { status } = useSelector(LoadingRidesStatus)
+    if(status === LoadingStatus.loading) {
+        return <Loading />
+    }
     return (
         <Container>
             {riders.length > 0 ? (

@@ -52,3 +52,9 @@ export default slice.reducer;
 export const SelectOpenRiders = (state: AllReducerState) => state.Riders.rider.filter(rider => rider.state === RidersStatus.CREATED)
 export const SelectAcceeptedRiders = (state: AllReducerState) => state.Riders.rider.filter(rider => rider.state === RidersStatus.ACCEPTED)
 export const SelectFinishedRiders = (state: AllReducerState) => state.Riders.rider.filter(rider => rider.state === RidersStatus.FINISHED)
+
+export const LoadingRidesStatus = (state: AllReducerState) => ({
+  status: state.Riders.status,
+  error: state.Riders.error
+ })
+

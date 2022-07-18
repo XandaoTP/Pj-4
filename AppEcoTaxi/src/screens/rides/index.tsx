@@ -9,13 +9,16 @@ import { faAddressBook } from "@fortawesome/free-regular-svg-icons";
 import { getRiders } from "../../services/getRiders";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../store/slices/userSlice";
-import { loadRiders } from "../../store/slices/ridersSlice";
+import { loadRiders, SelectAcceeptedRiders, SelectOpenRiders } from "../../store/slices/ridersSlice";
 import { useAppDispatch } from "../../store/store";
+import { TabBarIOSItem } from "react-native";
 
 
 const Tab = createBottomTabNavigator()
 
 export function RidersScreen () {
+    const acceeptedRiders = useSelector(SelectAcceeptedRiders)
+    const availableRides = useSelector(SelectOpenRiders)
     const user = useSelector(selectUser)
     const userId = user?.id || '';
     const dispatch = useAppDispatch()
@@ -48,13 +51,21 @@ export function RidersScreen () {
             tabBarLabelStyle: {
                 fontFamily: 'CormorantSC-Medium',
                 fontSize: 14,
+            },
+            tabBarBadgeStyle: {
+                backgroundColor: '#232222',
+                fontSize: 12,
             }
         })}>
             <Tab.Screen name="CaronasAbertas" component={OpenRidersScreen} options={{
-                title: 'Caronas Disponívies'
+                title: 'Caronas Disponívies',
+                tabBarBadge: availableRides.length > 0 ? availableRides.length : undefined
+                
             }} />
             <Tab.Screen name="Caronasaceitas" component={AcceptedRiders}options={{
-                title: 'Aceitas'
+                title: 'Aceitas',
+                tabBarBadge: acceeptedRiders.length > 0 ? acceeptedRiders.length : undefined
+                
             }}/>
             <Tab.Screen name="Caronasfinalizadas" component={FinishedRidersScreen}options={{
                 title: 'Finalizadas'
