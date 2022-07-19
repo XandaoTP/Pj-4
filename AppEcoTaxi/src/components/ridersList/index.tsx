@@ -8,6 +8,7 @@ import { Container } from "../Container"
 import { CustomAlert } from "../CustomAlert"
 import { CustomText } from "../customtext"
 import { Loading } from "../loading"
+import { RidesCards } from "../rides"
 
 type Props = {
     riders: Riders[]
@@ -28,11 +29,11 @@ export function RidersList ({ riders, NoRidersMessage }: Props) {
         )
     }
     return (
-        <Container>
+        <Container padding>
             {riders.length > 0 ? (
             <>
             {riders.map(rider => (
-            <CustomText key={rider.id}>{rider.friendlyId}</CustomText>
+            <RidesCards key={rider.id} rides={rider} />
             ))}
             </>
             ) : (
