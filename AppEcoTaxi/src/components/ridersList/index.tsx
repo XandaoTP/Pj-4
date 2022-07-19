@@ -21,9 +21,11 @@ export function RidersList ({ riders, NoRidersMessage }: Props) {
         return <Loading />
     }
     if(status === LoadingStatus.failed) {
+        return (
         <Container>
             <CustomAlert>Falha ao buscar dados</CustomAlert>
         </Container>
+        )
     }
     return (
         <Container>

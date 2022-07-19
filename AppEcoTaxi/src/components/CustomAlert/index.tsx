@@ -7,14 +7,25 @@ type Props = {
 }
 export function CustomAlert ({ children }: Props) {
     return (
-        <View>
+        <View style={styles.view}>
             <CustomText style={styles.alert}>{children}</CustomText>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
+    view: {
+        backgroundColor: '#ede8e8',
+        borderWidth: 2,
+        padding: 31,
+        borderColor: '#828282',
+        height: '100%',
+        justifyContent: 'center'
+    },
     alert:{
-        fontSize:20
+        color: '#f1081f',
+        fontSize:22,
+        textAlign:'center',
+        fontWeight: 'bold' 
     }
 })
