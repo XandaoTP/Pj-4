@@ -11,6 +11,7 @@ import { selectUser } from '../../store/slices/userSlice'
 import Toast from 'react-native-toast-message'
 import { useAppDispatch } from '../../store/store'
 import { loadRiders } from '../../store/slices/ridersSlice'
+import {openMap} from '../../services/openmap'
 
 type Props = {
     rides: Riders
@@ -63,8 +64,8 @@ export function RidesModal ({rides, visible , onRequestClose}: Props) {
                     )}
                     {rides.state === RidersStatus.ACCEPTED && (
                         <>
-                        <ModalActionButton>Traçar rota destino</ModalActionButton>
-                        <ModalActionButton>Traçar rota para chegada</ModalActionButton>
+                        <ModalActionButton onPress={() => openMap(rides.departure)} disabled={loading}>Traçar rota destino</ModalActionButton>
+                        <ModalActionButton onPress={() => openMap(rides.destination)} disabled={loading}>Traçar rota para chegada</ModalActionButton>
                         <ModalActionButton onPress={() => handleExecuteActionButton(ActionsType.finish)} disabled={loading}>Finalizar</ModalActionButton>
                         <ModalActionButton onPress={() => handleExecuteActionButton(ActionsType.cancel)} disabled={loading}>Cancelar</ModalActionButton>
                         </>
