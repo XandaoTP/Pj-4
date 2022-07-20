@@ -1,6 +1,6 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React from "react";
-import { Image, SafeAreaView, StyleSheet, View } from "react-native";
+import { Image, SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
 import { CustomButton } from "../../components/custombutton";
 import logo from '../../assets/img/LOGO_CARONA.png'
 import title from '../../assets/img/THINK-CLEAN.jpg'
@@ -32,10 +32,11 @@ const styles = StyleSheet.create({
     area: {
         flex:1,
         backgroundColor: '#efefef',
+        marginBottom: 25
     },
     container: {
         alignItems: 'center',
-        justifyContent: 'space-around',
+        justifyContent: 'space-between',
         flex: 1
     },
     logo: {
@@ -46,5 +47,5 @@ const styles = StyleSheet.create({
         width: 200,
         height: 350,
         resizeMode: 'contain',
-        
-}})
+    }
+})

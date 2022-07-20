@@ -21,10 +21,11 @@ const styles = StyleSheet.create({
         borderRadius: 55,
     },
     textBase: {
-        color: '#000000',
+        color: '#ffffff',
         textAlign: 'center',
         fontSize: 18,
-        fontFamily: 'CormorantSC-Regular'
+        fontFamily: 'CormorantSC-Regular',
+        fontWeight: "bold"
     },
     primary: {
         backgroundColor: '#05551e'

@@ -1,5 +1,5 @@
 import React from "react"
-import { StyleSheet } from "react-native"
+import { FlatList, ScrollView, StyleSheet } from "react-native"
 import { useSelector } from "react-redux"
 import { LoadingStatus } from "../../entities/loadingStatus"
 import { Riders } from "../../entities/riders"
@@ -29,13 +29,10 @@ export function RidersList ({ riders, NoRidersMessage }: Props) {
         )
     }
     return (
-        <Container padding>
+        <Container>
             {riders.length > 0 ? (
-            <>
-            {riders.map(rider => (
-            <RidesCards key={rider.id} rides={rider} />
-            ))}
-            </>
+                <FlatList data={riders} renderItem={({ item }) => <RidesCards rides={item} />}
+                contentContainerStyle={styles.ScrollSpace}/>
             ) : (
                 <CustomText style={styles.noRider}>{NoRidersMessage}</CustomText>
             )}    
@@ -48,5 +45,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 24,
         marginTop: '50%',
+    },
+    ScrollSpace: {
+        padding: 16,
     }
 })
