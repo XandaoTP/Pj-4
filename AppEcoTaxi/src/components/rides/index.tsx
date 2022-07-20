@@ -28,10 +28,10 @@ export function RidesCards ({ rides }: Props) {
 const BorderStyled = styled.TouchableOpacity`
     border : 1px solid #108907;
     border-radius: 16px;
-    margin-top: 12;
     padding: 12px;
     flex-direction: row;
     align-items: center;
+    margin-bottom: 12px;
 `
 const IconStyled = styled(FontAwesomeIcon)`
     color: #108907; 

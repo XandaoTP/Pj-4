@@ -1,6 +1,4 @@
-import { faBuilding } from "@fortawesome/free-solid-svg-icons"
 import { createAsyncThunk, createSlice, SerializedError } from "@reduxjs/toolkit"
-import { StatusBar } from "react-native"
 import { LoadingStatus } from "../../entities/loadingStatus"
 import { Riders } from "../../entities/riders"
 import { RidersStatus } from "../../entities/ridersStatus"

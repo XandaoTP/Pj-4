@@ -2,7 +2,6 @@ import React from "react";
 import { View } from "react-native";
 import styled from "styled-components/native";
 import { Riders } from "../../entities/riders";
-import { OpenRidersScreen } from "../../screens/rides/openRiders";
 import { CustomText } from "../customtext";
 
 type Props = {

@@ -15,7 +15,7 @@ const findOpenRiders = async () => {
 }
 
 const FindPartnerRiders = async (userId: string) => {
-    const RidersDocs = await firestore().collection('rides').where('partner', '==', userId).get()
+    const RidersDocs = await firestore().collection('rides').where('driver', '==', userId).get()
     return docsToRiders(RidersDocs)
 }
 const docsToRiders = (RidersDoc : FirebaseFirestoreTypes.QuerySnapshot<FirebaseFirestoreTypes.DocumentData>): Riders[] => {

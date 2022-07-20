@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Modal } from 'react-native'
 import {RideCardDetails} from '../ridesCardDetails'
 import {Riders} from '../../entities/riders'
 import styled from 'styled-components/native'
 import { ModalActionButton } from './buttonmodal'
 import { RidersStatus } from '../../entities/ridersStatus'
+import { ActionsType, ExecuteButtonModalAction } from '../../services/executeActionButtonModal'
+import { useSelector } from 'react-redux'
+import { selectUser } from '../../store/slices/userSlice'
+import Toast from 'react-native-toast-message'
+import { useAppDispatch } from '../../store/store'
+import { loadRiders } from '../../store/slices/ridersSlice'
 
 type Props = {
     rides: Riders
@@ -13,22 +19,54 @@ type Props = {
 }
 
 export function RidesModal ({rides, visible , onRequestClose}: Props) {
+    const attDispatch = useAppDispatch()
+    const user = useSelector(selectUser)
+    const userId = user?.id || ''
+    const [loading, setLoading] = useState(false)
+    const handleExecuteActionButton = async (action: ActionsType) => {
+        try {
+            setLoading(true)
+            await ExecuteButtonModalAction({
+                rideId: rides.id,
+                userId: userId,
+                action,
+            })
+            Toast.show({
+                type: 'success',
+                text1: 'Pedido atualizado.'
+            })
+            attDispatch(loadRiders(userId))
+        } catch {
+            Toast.show({
+                type: 'error',
+                text1: 'Desculpe. Algo não saiu como o esperado :(. Por Favor, tente novamente.'
+            })
+        }
+        setLoading(false)
+    }
+    const handleCloseModal = () => {
+        if (!loading) {
+          onRequestClose();
+        }
+    }
     return (
-       <Modal visible={visible} onRequestClose={onRequestClose} transparent>
+       <Modal visible={visible} onRequestClose={handleCloseModal} transparent>
         <ViewModalStyle>
-            <BackdropStyled onPress={onRequestClose}/>
+            <BackdropStyled onPress={handleCloseModal} disabled={loading}/>
             <ContentModalStyled>
-                <RideCardDetails rides={rides}  />
+                <RideCardDetails rides={rides} comments/>
+                {loading && <LoadingModalView />}
                 <ViewButtonBoxStyled>
                     {rides.state === RidersStatus.CREATED && (
-                        <ModalActionButton>Aceitar</ModalActionButton>
+                        <ModalActionButton
+                         onPress={() => handleExecuteActionButton(ActionsType.accept)} disabled={loading}>Aceitar</ModalActionButton>
                     )}
                     {rides.state === RidersStatus.ACCEPTED && (
                         <>
                         <ModalActionButton>Traçar rota destino</ModalActionButton>
                         <ModalActionButton>Traçar rota para chegada</ModalActionButton>
-                        <ModalActionButton>Finalizar</ModalActionButton>
-                        <ModalActionButton>Cancelar</ModalActionButton>
+                        <ModalActionButton onPress={() => handleExecuteActionButton(ActionsType.finish)} disabled={loading}>Finalizar</ModalActionButton>
+                        <ModalActionButton onPress={() => handleExecuteActionButton(ActionsType.cancel)} disabled={loading}>Cancelar</ModalActionButton>
                         </>
                     )}
                 </ViewButtonBoxStyled>
@@ -59,5 +97,9 @@ margin: 0 15px;
 border-radius: 15px;
 `
 const ViewButtonBoxStyled = styled.View`
+    padding-top: 2px;
+`
 
+const LoadingModalView = styled.ActivityIndicator`
+    margin-top: 15px;
 `
