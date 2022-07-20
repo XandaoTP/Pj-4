@@ -22,8 +22,15 @@ export function RidesModal ({rides, visible , onRequestClose}: Props) {
                 <ViewButtonBoxStyled>
                     {rides.state === RidersStatus.CREATED && (
                         <ModalActionButton>Aceitar</ModalActionButton>
-                    )
-                    }
+                    )}
+                    {rides.state === RidersStatus.ACCEPTED && (
+                        <>
+                        <ModalActionButton>Traçar rota destino</ModalActionButton>
+                        <ModalActionButton>Traçar rota para chegada</ModalActionButton>
+                        <ModalActionButton>Finalizar</ModalActionButton>
+                        <ModalActionButton>Cancelar</ModalActionButton>
+                        </>
+                    )}
                 </ViewButtonBoxStyled>
             </ContentModalStyled>
             </ViewModalStyle>
