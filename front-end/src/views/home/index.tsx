@@ -43,7 +43,7 @@ export function Home ({worldAnimation = true}: Props) {
       }, [isWorldAnimation, worldAnimation])
     const isUserLoggedIn = useSelector(selectUserLoggedIn)
     const colors =  [ {"color": "Primary", "text": "Ofereça carona"},
-    {"color": "Success", "text": "Salve o Planeta"},
+    {"color": "Success", "text": "Save the Planet"},
     {"color": "Secondary"},
     {"color": "info"},
     ]
